@@ -1,0 +1,30 @@
+{
+  "name": "pixel-parking-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "TZ=America/New_York vitest run",
+    "assets:web": "cd ../backend && python -m parking --export-web ../frontend/public/art",
+    "assets:export": "cd ../backend && python -m parking --export-web ../frontend/public/art --export-android ../frontend/android/app/src/main/res",
+    "android:build": "npm run assets:export && npm run build && cap sync android && cd android && ./gradlew assembleDebug",
+    "android:install": "bash ../scripts/install-apk.sh"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/app": "^8.1.1",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/local-notifications": "^8.3.1",
+    "@capacitor/preferences": "^8.0.1",
+    "@fontsource/press-start-2p": "^5.3.0"
+  }
+}

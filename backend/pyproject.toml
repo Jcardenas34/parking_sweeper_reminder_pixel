@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pixel-parking"
+version = "0.1.0"
+description = "Build-time art and chiptune generator for the Pixel Parking street-sweeping app"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Juan Cardenas" }]
+dependencies = ["Pillow>=10"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+pixel-parking = "parking.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["parking*"]
